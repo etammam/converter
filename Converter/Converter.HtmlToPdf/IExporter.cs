@@ -1,4 +1,5 @@
-﻿using Converter.HtmlToPdf.Options;
+﻿using System.Web.Mvc;
+using Converter.HtmlToPdf.Options;
 using JetBrains.Annotations;
 
 namespace Converter.HtmlToPdf
@@ -11,23 +12,12 @@ namespace Converter.HtmlToPdf
             string outputDirection,
             ConvertingOptions convertingOptions);
 
-        void FromHtmlString(
-            [NotNull] string html,
+        void FromHtmlString([NotNull] string html,
             string outputFileName,
-            string outputDirection,
             ConvertingOptions convertingOptions);
-
-        void FromHtmlFileAsBase64(
-            [NotNull] string htmlFileLocation,
-            ConvertingOptions convertingOptions);
-
-        void FromHtmlStringAsBase64(
-            [NotNull] string html,
-            ConvertingOptions convertingOptions);
-
-        void FromMvcViewToFile([AspMvcView] string mvcView,string outputFileName,
-            string outputDirection, ConvertingOptions convertingOptions);
-
-        void FromMvcToBase64([AspMvcView] string mvcView, ConvertingOptions convertingOptions);
+        
+        void FromMvcView([AspMvcController] Controller controller, [AspMvcView] string mvcView,
+            object model,string outputFileName
+            ,ConvertingOptions convertingOptions);
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using Converter.HtmlToPdf.Enums;
+﻿using System.Web.Mvc;
 using Converter.HtmlToPdf.Extensions;
 using Converter.HtmlToPdf.Options;
 
@@ -17,30 +16,24 @@ namespace Converter.HtmlToPdf
             document.Close(true);
         }
 
-        public void FromHtmlString(string html, string outputFileName, string outputDirection, ConvertingOptions convertingOptions)
+        public void FromHtmlString(string html, string outputFileName, ConvertingOptions convertingOptions)
         {
-            throw new NotImplementedException();
+            var converter = Processor.InitConverter();
+            var document = converter.Convert(html)
+                .InitDocument(convertingOptions);
+            document.Save(outputFileName);
+            document.Close(true);
         }
 
-        public void FromHtmlFileAsBase64(string htmlFileLocation, ConvertingOptions convertingOptions)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void FromHtmlStringAsBase64(string html, ConvertingOptions convertingOptions)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void FromMvcViewToFile(string mvcView, string outputFileName, string outputDirection,
+        public void FromMvcView(Controller controller,string mvcView,object model, string outputFileName,
             ConvertingOptions convertingOptions)
         {
-            throw new NotImplementedException();
-        }
-
-        public void FromMvcToBase64(string mvcView, ConvertingOptions convertingOptions)
-        {
-            throw new NotImplementedException();
+            var converter = Processor.InitConverter();
+            var htmlString = controller.RenderRazorViewToString(mvcView, model);
+            var document = converter.Convert(htmlString)
+                .InitDocument(convertingOptions);
+            document.Save(outputFileName);
+            document.Close(true);
         }
     }
 }
