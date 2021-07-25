@@ -2,6 +2,22 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
+        <Authors>Eslam M. Tammam</Authors>
+        <Company>Open Source</Company>
+        <Product>Html Converter</Product>
+        <Description>this package allow c# developers to easly exporting the html string or mvc view to a pdf file even if it written in arabic language or any rtl language</Description>
+        <Copyright>Open Source</Copyright>
+        <PackageProjectUrl>https://github.com/etammam/converter</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/etammam/converter</RepositoryUrl>
+        <RepositoryType>Open Source</RepositoryType>
+        <PackageTags>Html,Exporter,Arabic</PackageTags>
+        <PackageReleaseNotes>this package base on Qt framework</PackageReleaseNotes>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <PackageLicenseExpression></PackageLicenseExpression>
+        <PackageLicenseFile>License.txt</PackageLicenseFile>
+        <PackageIcon>pdf.png</PackageIcon>
+        <PackageIconUrl />
     </PropertyGroup>
 
     <ItemGroup>
@@ -131,6 +147,14 @@
       </None>
       <None Update="QtBinaries\zlib1.dll">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Include="..\..\pdf.png">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
+      <None Include="..\License.txt">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
       </None>
     </ItemGroup>
 
